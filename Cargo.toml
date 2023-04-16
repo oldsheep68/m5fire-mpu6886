@@ -1,0 +1,38 @@
+[package]
+name = "m5fire_mpu6886"
+version = "0.1.0"
+authors = ["oldsheep68 <oldsheep68@hotmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+embedded-hal-nb    = { version = "=1.0.0-alpha.1", optional = true }
+
+hal = { package = "esp32-hal", version = "0.11.0" }
+esp-backtrace = { version = "0.6.0", features = ["esp32", "panic-handler", "print-uart"] }
+esp-println       = { version = "0.4.0", features = ["esp32"] }
+
+
+display-interface-spi = "0.4.1"
+ili9341 = "0.5.0"
+embedded-graphics = "0.7.1"
+
+mpu6886 = {path = "../mpu6886"}
+shared-bus = "0.2.5"
+libm = "0.2.6"
+biquad = "0.4.2"
+
+[dependencies.lexical-core]
+version = "0.8.5"
+default-features = false
+# Can select only desired parsing/writing features.
+features = ["write-integers", "write-floats", "parse-integers", "parse-floats"]
+
+[dependencies.nalgebra]
+default-features = false
+version = "0.31.2"
+
+[patch.crates-io]
+ili9341 = { git = "https://github.com/verylowfreq/ili9341-rs", branch = "patched-v0.5.0" }
+
+
